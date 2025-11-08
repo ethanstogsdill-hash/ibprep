@@ -1,0 +1,45 @@
+SUBJECT_LINES:
+- {bank} {group} - Quick Question from {your_school} Student
+- Exploring {group} at {bank}
+- {your_school} Student Interested in {bank} {group}
+- Quick Question About Your Path to {bank}
+
+FORMAL:
+Dear {title} {name},
+
+I hope this email finds you well. My name is {your_name}, and I'm a {your_background} at {your_school} with a strong interest in {group} investment banking.
+
+I've been particularly impressed by {bank}'s recent work on {deal_mention}, and I would greatly appreciate the opportunity to learn more about your experience in {group} and your path to {bank}.
+
+Would you be available for a brief 15-20 minute call in the coming weeks? I'm flexible with timing and happy to work around your schedule.
+
+Thank you for considering my request.
+
+Best regards,
+{your_name}
+
+WARM:
+Hi {first_name},
+
+My name is {your_name}, and I'm a {your_background} at {your_school}. I'm reaching out because I'm deeply interested in {group} investment banking and have been following {bank}'s work in the space.
+
+{bank}'s execution on {deal_mention} really caught my attention, and I'd love to learn more about your experience working in {group}. Would you have 15-20 minutes for a quick call sometime in the next couple of weeks?
+
+I'm flexible with timing and happy to work around your schedule.
+
+Thanks so much for considering!
+
+Best,
+{your_name}
+
+CASUAL:
+Hi {first_name},
+
+Hope you're doing well! I'm {your_name}, a {your_background} at {your_school}. I'm really interested in {group} and have been impressed by the work {bank} has been doing, especially {deal_mention}.
+
+Would you be open to a quick 15-20 minute chat about your experience in {group}? I'd love to hear about your path to {bank} and learn from your insights.
+
+Happy to work around your schedule!
+
+Thanks,
+{your_name}

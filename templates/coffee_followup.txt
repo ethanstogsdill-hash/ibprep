@@ -1,0 +1,41 @@
+SUBJECT_LINES:
+- Following Up - Coffee Chat
+- Great Speaking With You
+- Quick Follow-Up from Our Chat
+- Thanks Again for Your Time
+
+FORMAL:
+Dear {title} {name},
+
+Thank you again for taking the time to speak with me {timeframe}. I genuinely enjoyed learning about your experience in {group} at {bank}, particularly your insights on {discussion_topic}.
+
+Our conversation reinforced my interest in {group}, and I wanted to follow up on {specific_followup}. Additionally, I wanted to share that {update_on_your_end}.
+
+I'd appreciate staying in touch as I continue exploring opportunities in {group}. Please don't hesitate to reach out if I can ever be helpful to you.
+
+Best regards,
+{your_name}
+
+WARM:
+Hi {first_name},
+
+Thanks again for the great conversation {timeframe}! I really appreciated your perspective on {discussion_topic} and learning more about your path in {group}.
+
+I wanted to follow up on {specific_followup}. Also, I thought you'd be interested to know that {update_on_your_end}.
+
+Would love to stay in touch as recruiting progresses. Thanks again for your time and insights!
+
+Best,
+{your_name}
+
+CASUAL:
+Hi {first_name},
+
+Really enjoyed our chat {timeframe}! Your insights on {discussion_topic} were super helpful as I think about {group}.
+
+Quick follow-up on {specific_followup}. Also wanted to let you know that {update_on_your_end}.
+
+Thanks again for taking the time - hope we can stay in touch!
+
+Best,
+{your_name}

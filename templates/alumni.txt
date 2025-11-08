@@ -1,0 +1,43 @@
+SUBJECT_LINES:
+- Fellow {your_school} Alum - Quick Question
+- {your_school} to {bank} {group}
+- {your_school} Student Interested in {group}
+- Fellow {your_school} Alum Exploring {bank}
+
+FORMAL:
+Dear {title} {name},
+
+I hope this email finds you well. My name is {your_name}, and I'm currently a {your_background} at {your_school}. I came across your profile and noticed we share the {your_school} connection.
+
+I'm very interested in pursuing {group} investment banking and have been particularly impressed by {bank}'s work, including {deal_mention}. I would be grateful for the opportunity to learn about your path from {your_school} to {group} at {bank}.
+
+Would you be available for a brief 15-20 minute call in the coming weeks? As a fellow {your_school} alum, any insights you could share would be incredibly valuable.
+
+Thank you for considering my request.
+
+Best regards,
+{your_name}
+
+WARM:
+Hi {first_name},
+
+Go {mascot}! I'm {your_name}, a {your_background} at {your_school}, and I came across your profile while researching {group} banking.
+
+I'm really interested in {group} and have been following {bank}'s work in the space, especially {deal_mention}. I'd love to hear about your experience going from {your_school} to {group} at {bank}.
+
+Would you have 15-20 minutes for a quick call? Would be great to connect with a fellow alum!
+
+Thanks so much,
+{your_name}
+
+CASUAL:
+Hi {first_name},
+
+Hope you're doing well! Fellow {your_school} alum here - I'm {your_name}, currently a {your_background}.
+
+I'm exploring {group} and really interested in learning about your path from {your_school} to {bank}. I've been impressed by {bank}'s work on deals like {deal_mention} and would love to hear your perspective.
+
+Any chance you'd be open to a quick 15-20 minute chat? Always great connecting with fellow {mascot}!
+
+Best,
+{your_name}

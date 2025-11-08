@@ -1,0 +1,10 @@
+# IB Networking Email Generator Requirements
+# Pure Python - no external dependencies needed!
+# Python 3.7+ required
+
+# The application uses only Python standard library:
+# - csv (for batch processing and tracking)
+# - os (for file operations)
+# - datetime (for tracking and follow-ups)
+# - re (for metrics calculation)
+# - typing (for type hints)

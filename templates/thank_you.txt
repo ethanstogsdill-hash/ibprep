@@ -1,0 +1,43 @@
+SUBJECT_LINES:
+- Thank You - {bank} Conversation
+- Grateful for Your Time and Insights
+- Thank You for the Informational Interview
+- Appreciate Your Time Today
+
+FORMAL:
+Dear {title} {name},
+
+Thank you for taking the time to speak with me today about {group} at {bank}. I'm very grateful for your generosity in sharing your experiences and insights.
+
+Your perspective on {discussion_topic} was particularly valuable and has strengthened my conviction about pursuing a career in {group}. I was especially intrigued by your comments on {specific_insight}.
+
+As I continue through the recruiting process, I will certainly keep your advice in mind. Please don't hesitate to reach out if there's anything I can do to be helpful to you.
+
+Thank you again for your time.
+
+Best regards,
+{your_name}
+
+WARM:
+Hi {first_name},
+
+I wanted to send a quick note to thank you for our conversation today. I really appreciated you taking the time to share your experiences in {group} at {bank}.
+
+Your insights on {discussion_topic} were incredibly helpful, and I left our conversation even more excited about {group}. Your point about {specific_insight} really resonated with me.
+
+Thanks again for your time and advice. I'll definitely stay in touch as things progress!
+
+Best,
+{your_name}
+
+CASUAL:
+Hi {first_name},
+
+Thanks so much for chatting today! Really enjoyed hearing about your experience in {group} and getting your take on {discussion_topic}.
+
+Your advice on {specific_insight} was super helpful and definitely gave me a lot to think about as I navigate recruiting.
+
+Appreciate you making the time - hope we can stay connected!
+
+Thanks,
+{your_name}

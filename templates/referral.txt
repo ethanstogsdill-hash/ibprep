@@ -1,0 +1,43 @@
+SUBJECT_LINES:
+- {referrer_name} Suggested I Reach Out
+- Introduction from {referrer_name}
+- {referrer_name} Recommended I Connect With You
+- Following Up on {referrer_name}'s Introduction
+
+FORMAL:
+Dear {title} {name},
+
+I hope this email finds you well. {referrer_name} {referrer_context} suggested I reach out to you regarding my interest in {group} at {bank}.
+
+I'm a {your_background} at {your_school}, and I've been particularly drawn to {group} banking. {referrer_name} mentioned that you'd be an excellent person to speak with given your experience in {group} and your work on deals like {deal_mention}.
+
+Would you be available for a brief 15-20 minute call to discuss your experience at {bank}? I'm flexible with timing and happy to work around your schedule.
+
+Thank you for considering my request.
+
+Best regards,
+{your_name}
+
+WARM:
+Hi {first_name},
+
+{referrer_name} {referrer_context} recommended I reach out to you! I'm a {your_background} at {your_school} with a strong interest in {group}, and {referrer_name} thought you'd be a great person to connect with.
+
+I've been following {bank}'s work in {group}, particularly {deal_mention}, and would love to learn more about your experience. Would you have 15-20 minutes for a quick call in the coming weeks?
+
+Thanks so much for considering!
+
+Best,
+{your_name}
+
+CASUAL:
+Hi {first_name},
+
+Hope you're doing well! {referrer_name} {referrer_context} highly recommended I connect with you about {group} at {bank}.
+
+I'm a {your_background} at {your_school} and really interested in learning more about your experience. {referrer_name} mentioned you'd be a great person to chat with given your background in {group}.
+
+Would you be open to a quick 15-20 minute call? Happy to work around your schedule!
+
+Thanks,
+{your_name}
