@@ -2,7 +2,26 @@
 
 A professional-grade Python tool for discovering IB contacts and generating personalized networking emails. Built for recruiting season with quality and personalization in mind.
 
-## 🆕 Two Tools in One
+## 🌐 Web Interface (Recommended - Easiest!)
+
+**Use it in your browser - no command line needed!**
+
+```bash
+python web_server.py
+```
+
+Browser opens automatically to beautiful web interface where you can:
+- ✅ Search contacts by bank/division/location
+- ✅ Load 20 sample contacts to test
+- ✅ Generate emails for everyone with one click
+- ✅ Add new contacts with a form
+- ✅ View database statistics
+
+**[📖 Full Web Interface Guide →](WEB_GUIDE.md)**
+
+---
+
+## Command Line Tools (Advanced)
 
 ### `discover.py` - Contact Discovery + Email Generator (NEW!)
 

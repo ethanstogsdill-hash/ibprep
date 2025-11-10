@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IB Contact Discovery & Email Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .results {
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .contact-card h3 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            color: #666;
+            margin: 4px 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-box .label {
+            opacity: 0.9;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #f59e0b;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab:hover {
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 IB Contact Finder</h1>
+            <p>Find investment banking contacts and generate personalized emails</p>
+        </div>
+
+        <div class="card">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('search')">🔍 Search Contacts</button>
+                <button class="tab" onclick="switchTab('add')">➕ Add Contact</button>
+                <button class="tab" onclick="switchTab('stats')">📊 Stats</button>
+            </div>
+
+            <!-- Search Tab -->
+            <div id="search-tab" class="tab-content active">
+                <h2>Search for Contacts</h2>
+
+                <div id="sample-data-prompt" class="alert alert-info">
+                    <strong>👋 First time here?</strong> Load sample data to test with 20 IB contacts.
+                    <button class="btn btn-success" onclick="loadSampleData()" style="margin-left: 10px;">Load Sample Data</button>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bank">Bank Name</label>
+                        <input type="text" id="bank" placeholder="e.g., Goldman Sachs">
+                    </div>
+                    <div class="form-group">
+                        <label for="division">Division</label>
+                        <input type="text" id="division" placeholder="e.g., M&A, Investment Banking">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="group">Group</label>
+                        <input type="text" id="group" placeholder="e.g., TMT, Healthcare">
+                    </div>
+                    <div class="form-group">
+                        <label for="seniority">Seniority</label>
+                        <select id="seniority">
+                            <option value="">All Levels</option>
+                            <option value="Analyst">Analyst</option>
+                            <option value="Associate">Associate</option>
+                            <option value="VP">VP</option>
+                            <option value="Director">Director</option>
+                            <option value="MD">MD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" placeholder="e.g., New York">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" placeholder="e.g., NY">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="searchContacts()">🔍 Search Contacts</button>
+                    <button class="btn btn-secondary" onclick="clearSearch()">Clear</button>
+                </div>
+
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 10px;">Searching...</p>
+                </div>
+
+                <div id="results" class="results"></div>
+            </div>
+
+            <!-- Add Contact Tab -->
+            <div id="add-tab" class="tab-content">
+                <h2>Add New Contact</h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="add-name">Full Name *</label>
+                        <input type="text" id="add-name" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-bank">Bank *</label>
+                        <input type="text" id="add-bank" placeholder="Goldman Sachs" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="add-title">Job Title *</label>
+                        <input type="text" id="add-title" placeholder="Associate - M&A" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-location">Location</label>
+                        <input type="text" id="add-location" placeholder="New York, NY">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="add-linkedin">LinkedIn URL</label>
+                    <input type="text" id="add-linkedin" placeholder="https://linkedin.com/in/johnsmith">
+                </div>
+
+                <div class="form-group">
+                    <label for="add-notes">Notes</label>
+                    <input type="text" id="add-notes" placeholder="Met at conference">
+                </div>
+
+                <button class="btn btn-primary" onclick="addContact()">➕ Add Contact</button>
+
+                <div id="add-result"></div>
+            </div>
+
+            <!-- Stats Tab -->
+            <div id="stats-tab" class="tab-content">
+                <h2>Database Statistics</h2>
+                <button class="btn btn-secondary" onclick="loadStats()">🔄 Refresh Stats</button>
+                <div id="stats-content" class="stats"></div>
+            </div>
+        </div>
+
+        <!-- Generate Emails Modal (appears after search) -->
+        <div id="email-modal" class="card hidden">
+            <h2>Generate Emails</h2>
+            <p id="email-count"></p>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="your-name">Your Full Name *</label>
+                    <input type="text" id="your-name" placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label for="your-school">Your University *</label>
+                    <input type="text" id="your-school" placeholder="University of Pennsylvania">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="your-background">Your Background *</label>
+                <input type="text" id="your-background" placeholder="Junior studying Finance">
+            </div>
+
+            <div class="form-group">
+                <label for="template-type">Email Template</label>
+                <select id="template-type">
+                    <option value="cold_outreach">Cold Outreach</option>
+                    <option value="alumni">Alumni Connection</option>
+                    <option value="referral">Referral Introduction</option>
+                    <option value="coffee_followup">Coffee Follow-up</option>
+                    <option value="thank_you">Thank You</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="deal-mention">Deal Mention (Optional)</label>
+                <input type="text" id="deal-mention" placeholder="Microsoft-Activision acquisition">
+            </div>
+
+            <button class="btn btn-success" onclick="generateEmails()">✉️ Generate All Emails</button>
+            <button class="btn btn-secondary" onclick="hideEmailModal()">Cancel</button>
+
+            <div id="generation-result"></div>
+        </div>
+    </div>
+
+    <script>
+        let foundContacts = [];
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+
+            // Load stats if stats tab
+            if (tabName === 'stats') {
+                loadStats();
+            }
+        }
+
+        async function loadSampleData() {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
+
+            try {
+                const response = await fetch('/api/load_sample_data', {
+                    method: 'POST'
+                });
+                const data = await response.json();
+
+                document.getElementById('sample-data-prompt').innerHTML = `
+                    <strong>✅ Success!</strong> Loaded ${data.count} sample contacts. Try searching for "Goldman Sachs" or "M&A" now.
+                `;
+                document.getElementById('sample-data-prompt').className = 'alert alert-success';
+            } catch (error) {
+                alert('Error loading sample data: ' + error.message);
+                btn.disabled = false;
+                btn.textContent = 'Load Sample Data';
+            }
+        }
+
+        async function searchContacts() {
+            const params = {
+                bank: document.getElementById('bank').value,
+                division: document.getElementById('division').value,
+                group: document.getElementById('group').value,
+                seniority: document.getElementById('seniority').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value
+            };
+
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('results').innerHTML = '';
+
+            try {
+                const queryString = new URLSearchParams(params).toString();
+                const response = await fetch('/api/search?' + queryString);
+                const data = await response.json();
+
+                foundContacts = data.contacts;
+
+                document.getElementById('loading').classList.remove('active');
+
+                if (data.contacts.length === 0) {
+                    document.getElementById('results').innerHTML = `
+                        <div class="alert alert-warning">
+                            <strong>No contacts found.</strong> Try broader search terms or load sample data first.
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = `
+                    <div class="alert alert-success">
+                        <strong>✅ Found ${data.contacts.length} contact(s)</strong>
+                    </div>
+                `;
+
+                data.contacts.forEach(contact => {
+                    html += `
+                        <div class="contact-card">
+                            <h3>${contact.name}</h3>
+                            <p><strong>${contact.title || 'N/A'}</strong> at ${contact.bank}</p>
+                            ${contact.division ? `<p>Division: ${contact.division}${contact.group_name ? ' - ' + contact.group_name : ''}</p>` : ''}
+                            ${contact.location_city ? `<p>📍 ${contact.location_city}, ${contact.location_state}</p>` : ''}
+                        </div>
+                    `;
+                });
+
+                html += `
+                    <button class="btn btn-success" onclick="showEmailModal()">
+                        ✉️ Generate Emails for All ${data.contacts.length} Contact(s)
+                    </button>
+                `;
+
+                document.getElementById('results').innerHTML = html;
+            } catch (error) {
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('results').innerHTML = `
+                    <div class="alert alert-warning">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        function clearSearch() {
+            document.getElementById('bank').value = '';
+            document.getElementById('division').value = '';
+            document.getElementById('group').value = '';
+            document.getElementById('seniority').value = '';
+            document.getElementById('city').value = '';
+            document.getElementById('state').value = '';
+            document.getElementById('results').innerHTML = '';
+        }
+
+        function showEmailModal() {
+            document.getElementById('email-count').textContent =
+                `Generate personalized emails for ${foundContacts.length} contact(s)`;
+            document.getElementById('email-modal').classList.remove('hidden');
+            window.scrollTo(0, document.getElementById('email-modal').offsetTop - 20);
+        }
+
+        function hideEmailModal() {
+            document.getElementById('email-modal').classList.add('hidden');
+        }
+
+        async function generateEmails() {
+            const senderData = {
+                your_name: document.getElementById('your-name').value,
+                your_school: document.getElementById('your-school').value,
+                your_background: document.getElementById('your-background').value,
+                deal_mention: document.getElementById('deal-mention').value,
+                template_type: document.getElementById('template-type').value
+            };
+
+            if (!senderData.your_name || !senderData.your_school || !senderData.your_background) {
+                alert('Please fill in all required fields (marked with *)');
+                return;
+            }
+
+            const btn = event.target;
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+
+            try {
+                const response = await fetch('/api/generate_emails', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contacts: foundContacts,
+                        sender: senderData
+                    })
+                });
+
+                const data = await response.json();
+
+                document.getElementById('generation-result').innerHTML = `
+                    <div class="alert alert-success" style="margin-top: 20px;">
+                        <strong>🎉 Success!</strong> Generated ${data.count} emails!<br>
+                        📁 Saved to: <strong>${data.output_dir}</strong><br>
+                        📊 All emails added to tracking system
+                    </div>
+                `;
+
+                btn.textContent = '✅ Generated!';
+            } catch (error) {
+                document.getElementById('generation-result').innerHTML = `
+                    <div class="alert alert-warning" style="margin-top: 20px;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+                btn.disabled = false;
+                btn.textContent = '✉️ Generate All Emails';
+            }
+        }
+
+        async function addContact() {
+            const contactData = {
+                name: document.getElementById('add-name').value,
+                bank: document.getElementById('add-bank').value,
+                title: document.getElementById('add-title').value,
+                location: document.getElementById('add-location').value,
+                linkedin_url: document.getElementById('add-linkedin').value,
+                notes: document.getElementById('add-notes').value
+            };
+
+            if (!contactData.name || !contactData.bank || !contactData.title) {
+                alert('Please fill in all required fields (marked with *)');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/add_contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(contactData)
+                });
+
+                const data = await response.json();
+
+                document.getElementById('add-result').innerHTML = `
+                    <div class="alert alert-success" style="margin-top: 20px;">
+                        <strong>✅ Contact added!</strong> ${contactData.name} at ${contactData.bank}
+                    </div>
+                `;
+
+                // Clear form
+                document.getElementById('add-name').value = '';
+                document.getElementById('add-bank').value = '';
+                document.getElementById('add-title').value = '';
+                document.getElementById('add-location').value = '';
+                document.getElementById('add-linkedin').value = '';
+                document.getElementById('add-notes').value = '';
+            } catch (error) {
+                document.getElementById('add-result').innerHTML = `
+                    <div class="alert alert-warning" style="margin-top: 20px;">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+
+                let html = `
+                    <div class="stat-box">
+                        <div class="number">${data.total}</div>
+                        <div class="label">Total Contacts</div>
+                    </div>
+                `;
+
+                if (data.by_bank && Object.keys(data.by_bank).length > 0) {
+                    const topBank = Object.entries(data.by_bank)[0];
+                    html += `
+                        <div class="stat-box">
+                            <div class="number">${topBank[1]}</div>
+                            <div class="label">at ${topBank[0]}</div>
+                        </div>
+                    `;
+                }
+
+                if (data.by_division && Object.keys(data.by_division).length > 0) {
+                    const topDiv = Object.entries(data.by_division)[0];
+                    html += `
+                        <div class="stat-box">
+                            <div class="number">${topDiv[1]}</div>
+                            <div class="label">in ${topDiv[0]}</div>
+                        </div>
+                    `;
+                }
+
+                document.getElementById('stats-content').innerHTML = html;
+            } catch (error) {
+                document.getElementById('stats-content').innerHTML = `
+                    <div class="alert alert-warning">Error loading stats: ${error.message}</div>
+                `;
+            }
+        }
+
+        // Load stats on page load
+        window.addEventListener('load', () => {
+            loadStats();
+        });
+    </script>
+</body>
+</html>

@@ -1,8 +1,30 @@
 # Quick Start Guide
 
-## Choose Your Tool
+## 🌐 Web Interface (Easiest - Recommended!)
 
-### 🆕 Contact Discovery (Recommended for Recruiting)
+**Use it in your browser - no command line needed!**
+
+```bash
+python web_server.py
+```
+
+**That's it!** Your browser opens automatically to: http://localhost:8000
+
+**Then**:
+1. Click "Load Sample Data" (green button)
+2. Type "Goldman Sachs" in Bank field
+3. Click "Search Contacts"
+4. Click "Generate Emails"
+5. Fill in your info and click generate
+6. ✅ Done! Check `output/batch_discovery/`
+
+**[📖 Full Web Interface Guide →](WEB_GUIDE.md)**
+
+---
+
+## Command Line Tools
+
+### Contact Discovery CLI
 **Goal**: Find multiple people at a bank + generate emails for all
 
 ```bash
