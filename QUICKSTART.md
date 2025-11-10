@@ -1,16 +1,51 @@
 # Quick Start Guide
 
-## Get Started in 2 Minutes
+## Choose Your Tool
 
-### Installation
+### 🆕 Contact Discovery (Recommended for Recruiting)
+**Goal**: Find multiple people at a bank + generate emails for all
+
 ```bash
-cd ibprep
-python main.py
+python discover.py
+# Load sample data (option 7)
+# Search contacts (option 1): "Goldman Sachs, M&A, New York"
+# Auto-generate emails for everyone found
 ```
 
-That's it! No dependencies to install.
+**[Full Discovery Guide →](DISCOVERY_GUIDE.md)**
 
-## First Email (Interactive)
+### Individual Email Generator
+**Goal**: Generate one customized email
+
+```bash
+python main.py
+# Follow prompts for single contact
+```
+
+---
+
+## Quick Start: Contact Discovery (2 Minutes)
+
+### Step 1: Load Sample Data
+```bash
+python discover.py
+# Select: 7 (Load Sample Data)
+# Adds 20 IB contacts for testing
+```
+
+### Step 2: Search & Generate
+```bash
+# Select: 1 (Search Contacts & Generate Emails)
+Bank: Goldman Sachs
+Division: M&A
+City: New York
+[Enter your info when prompted]
+# Done! Emails in output/batch_discovery/
+```
+
+---
+
+## Quick Start: Individual Email (2 Minutes)
 
 1. Run `python main.py`
 2. Select option `1` (Generate Single Email)

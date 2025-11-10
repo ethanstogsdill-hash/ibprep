@@ -1,6 +1,58 @@
 # IB Networking Email Generator
 
-A professional-grade Python tool for generating personalized investment banking networking emails. Built for recruiting season with quality and personalization in mind.
+A professional-grade Python tool for discovering IB contacts and generating personalized networking emails. Built for recruiting season with quality and personalization in mind.
+
+## 🆕 Two Tools in One
+
+### `discover.py` - Contact Discovery + Email Generator (NEW!)
+
+**What it does**: Input bank + division + location → Get list of contacts + auto-generated emails
+
+```bash
+python discover.py
+
+# Example workflow:
+# 1. Search: "Goldman Sachs, M&A, New York, NY"
+# 2. Results: Found 15 contacts
+# 3. Generate: Personalized email for each person
+# 4. Export: All emails saved automatically
+```
+
+**Perfect for**: Batch outreach, building contact database, targeting specific banks/divisions
+
+📖 **[Read the full Discovery Guide →](DISCOVERY_GUIDE.md)**
+
+---
+
+### `main.py` - Individual Email Generator (Original)
+
+**What it does**: Input contact details → Get customized email variations
+
+```bash
+python main.py
+
+# Example workflow:
+# 1. Enter: Name, bank, title, etc.
+# 2. Generate: 3 email variations
+# 3. Review: Metrics and subject lines
+# 4. Save: Track and export
+```
+
+**Perfect for**: Follow-ups, one-off emails, high-touch customization
+
+---
+
+## Which Tool Should I Use?
+
+| Scenario | Tool | Why |
+|----------|------|-----|
+| "I want to email everyone in Goldman M&A" | `discover.py` | Search + batch generate |
+| "I need to follow up with someone" | `main.py` | More customization |
+| "I have a list of 20 targets" | `discover.py` | Bulk generation |
+| "I want a thank you email" | `main.py` | Template flexibility |
+| "Starting recruiting season" | `discover.py` | Build database |
+
+**Pro tip**: Use **both**! `discover.py` for initial outreach, `main.py` for follow-ups.
 
 ## Features
 
@@ -18,6 +70,15 @@ A professional-grade Python tool for generating personalized investment banking 
 - ✅ Professional but personable tone
 - ✅ Strong, attention-grabbing subject lines
 - ✅ Demonstrates genuine interest
+
+### 🆕 Contact Discovery Features
+- **Contact Database**: SQLite database to store and manage IB contacts
+- **Smart Search**: Filter by bank, division, group, location, seniority
+- **Auto Title Parsing**: Automatically extract seniority/division from job titles
+- **Bulk Import**: Import contacts from CSV (alumni databases, recruiter lists)
+- **Search Instructions**: Generate LinkedIn/Google search URLs
+- **Batch Email Generation**: Generate personalized emails for all matching contacts
+- **Database Stats**: Track your network by bank, division, location
 
 ## Installation
 
