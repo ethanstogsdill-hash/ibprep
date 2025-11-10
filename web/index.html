@@ -332,8 +332,21 @@
                 </div>
 
                 <div class="button-group">
-                    <button class="btn btn-primary" onclick="searchContacts()">🔍 Search Contacts</button>
+                    <button class="btn btn-primary" onclick="searchContacts()">🔍 Search Database</button>
+                    <button class="btn btn-success" onclick="findOnLinkedIn()">🔗 Find on LinkedIn</button>
                     <button class="btn btn-secondary" onclick="clearSearch()">Clear</button>
+                </div>
+
+                <div id="linkedin-instructions" class="alert alert-info hidden" style="margin-top: 20px;">
+                    <strong>📋 How to find contacts on LinkedIn:</strong>
+                    <ol style="margin: 10px 0; padding-left: 20px;">
+                        <li>A LinkedIn search will open in a new tab</li>
+                        <li>Browse the results and find people you want to contact</li>
+                        <li>For each person, copy their: Name, Title, Location</li>
+                        <li>Go to the "Add Contact" tab and paste their info</li>
+                        <li>Or create a CSV and bulk import!</li>
+                    </ol>
+                    <p style="margin-top: 10px;"><strong>Tip:</strong> Use LinkedIn's filters to narrow results by seniority, location, etc.</p>
                 </div>
 
                 <div id="loading" class="loading">
@@ -347,6 +360,11 @@
             <!-- Add Contact Tab -->
             <div id="add-tab" class="tab-content">
                 <h2>Add New Contact</h2>
+
+                <div class="alert alert-info">
+                    <strong>💡 Tip:</strong> Use the "Find on LinkedIn" button in the Search tab to open LinkedIn,
+                    then copy/paste contact info here to quickly build your database!
+                </div>
 
                 <div class="form-row">
                     <div class="form-group">
@@ -479,6 +497,45 @@
                 btn.disabled = false;
                 btn.textContent = 'Load Sample Data';
             }
+        }
+
+        function findOnLinkedIn() {
+            // Get search criteria
+            const bank = document.getElementById('bank').value || '';
+            const division = document.getElementById('division').value || '';
+            const city = document.getElementById('city').value || '';
+            const state = document.getElementById('state').value || '';
+
+            if (!bank && !division) {
+                alert('Please enter at least a Bank name or Division to search');
+                return;
+            }
+
+            // Build search query
+            let searchQuery = bank;
+            if (division) searchQuery += ' ' + division;
+            if (city) searchQuery += ' ' + city;
+            if (state) searchQuery += ' ' + state;
+
+            // Build LinkedIn search URL
+            const encodedQuery = encodeURIComponent(searchQuery.trim());
+            const linkedInURL = `https://www.linkedin.com/search/results/people/?keywords=${encodedQuery}`;
+
+            // Show instructions
+            document.getElementById('linkedin-instructions').classList.remove('hidden');
+
+            // Open LinkedIn in new tab
+            window.open(linkedInURL, '_blank');
+
+            // Show helpful message
+            setTimeout(() => {
+                alert('LinkedIn search opened in new tab!\n\n' +
+                      'Find the people you want to contact, then:\n' +
+                      '1. Copy their info (name, title, location)\n' +
+                      '2. Go to "Add Contact" tab\n' +
+                      '3. Paste and add each person\n' +
+                      '4. Then search and generate emails!');
+            }, 500);
         }
 
         async function searchContacts() {
